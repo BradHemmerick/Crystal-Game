@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>simple crystal game</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+
+  <h1>Number to Guess: <span id="number-to-guess"></span></h1>
+
+  <!-- empty div for crystal images -->
+  <div id="crystals">
+  </div>
+
+<p id="wins">
+</p>
+
+<p id="lose">
+</p>
+
+<p id=score>
+</p>
+
+<P>
+  <input id=reset type="reset" value="Reset Button"/>
+</P>
+
+  <!-- JAVASCRIPT  -->
+  <!-- ========================================= -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+
+  var targetNumber = 54;
+
+  $("#number-to-guess").text(targetNumber);
+
+  var counter = 0;
+  var wins = 1;
+  var lose = 1;
+
+  // make an array of possible numbers
+  var numberChoice = [12, 7, 5, 2];
+
+  // make a for loop for every numberChoice
+  for (var i = 0; i < numberChoice.length; i++) {
+
+    // add a crystal img
+    var imageCrystal = $("<img>");
+
+    // give each crystal a class of crystal image
+
+    imageCrystal.addClass("crystal-image");
+
+    // add the images to the crystals
+    imageCrystal.attr("src", "http://images.clipartpanda.com/crystal-clipart-crystals.png");
+
+    // give each image crystal a data attribute and make it equal to array value
+    imageCrystal.attr("data-crystalvalue", numberChoice[i]);
+
+    // add crystal-image to the page
+    $("#crystals").append(imageCrystal);
+  }
+
+  // on click function
+  $(".crystal-image").on("click", function() {
+
+    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = parseInt(crystalValue);
+    counter += crystalValue;
+
+    //winning and losing logic
+    $(score).text("Your current number: " + counter);
+
+    if (counter === targetNumber) {
+      $( "#wins" ).text("Wins: " + wins++);
+      counter = 0;
+      
+    }
+
+    else if (counter >= targetNumber) {
+        $( "#lose" ).text("Losses: " + lose++);
+        counter = 0;
+    }
+
+  });
+
+  </script>
+</body>
+</html>
