@@ -1,0 +1,33 @@
+body{
+    background-color: mintcream;
+    color: rosybrown;
+}
+.crystal-image {
+    width: 198px;
+    height:  198px;
+}
+reset{
+    color: rosybrown;
+}
+img:hover{
+    transform: scale(1.4);
+	transition: all ls;
+    cursor: pointer;
+}
+h1{
+    font-size: 64px;
+}
+p{
+ font-size: 32px;
+}
+
+#intro{
+    font-size: 22px;
+    font-weight: 10000;
+}
+#reset{
+    background-color: rosybrown;
+    color: mintcream;
+    width: 95px;
+    height: 65px;
+}
